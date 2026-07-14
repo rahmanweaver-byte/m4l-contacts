@@ -1,0 +1,205 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Marine For Life — SoCal/Riverside</title>
+<meta name="description" content="Marine For Life Network, SoCal/Riverside Region. Save our contact and connect with veteran resources.">
+<style>
+  :root {
+    --scarlet: #9C1827;
+    --scarlet-deep: #7A1220;
+    --gold: #FFD700;
+    --gold-soft: #E8C766;
+    --cream: #FBF6EA;
+    --ink: #2A1215;
+  }
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  html { -webkit-text-size-adjust: 100%; }
+  body {
+    font-family: Georgia, 'Times New Roman', serif;
+    background: var(--scarlet);
+    background: linear-gradient(170deg, var(--scarlet) 0%, var(--scarlet-deep) 100%);
+    color: var(--cream);
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+  .frame {
+    width: 100%;
+    max-width: 480px;
+    padding: 28px 22px 40px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+  }
+  /* Gold rule with diamond center — echoes dress-blues trouser stripe */
+  .rule {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin: 18px 0;
+  }
+  .rule::before, .rule::after {
+    content: "";
+    flex: 1;
+    height: 2px;
+    background: var(--gold);
+  }
+  .rule span {
+    width: 9px; height: 9px;
+    background: var(--gold);
+    transform: rotate(45deg);
+    display: block;
+  }
+  .eyebrow {
+    font-size: 13px;
+    letter-spacing: 4px;
+    text-transform: uppercase;
+    color: var(--gold-soft);
+    margin-bottom: 10px;
+  }
+  h1 {
+    font-size: 34px;
+    line-height: 1.15;
+    letter-spacing: 1px;
+    color: var(--gold);
+    font-weight: 700;
+  }
+  h1 .network {
+    display: block;
+    font-size: 17px;
+    letter-spacing: 8px;
+    font-weight: 400;
+    color: var(--cream);
+    margin-top: 8px;
+  }
+  .region {
+    font-style: italic;
+    font-size: 17px;
+    color: var(--gold-soft);
+    margin-top: 4px;
+  }
+  .motto {
+    font-style: italic;
+    font-size: 15px;
+    color: var(--cream);
+    opacity: 0.85;
+    margin-top: 14px;
+  }
+  .save-btn {
+    display: block;
+    width: 100%;
+    margin-top: 26px;
+    padding: 18px 20px;
+    background: var(--gold);
+    color: var(--scarlet-deep);
+    font-family: Georgia, serif;
+    font-size: 19px;
+    font-weight: 700;
+    letter-spacing: 1px;
+    text-decoration: none;
+    border: none;
+    border-radius: 6px;
+    box-shadow: 0 4px 0 rgba(0,0,0,0.25);
+  }
+  .save-btn:active { transform: translateY(2px); box-shadow: 0 2px 0 rgba(0,0,0,0.25); }
+  .save-btn small {
+    display: block;
+    font-size: 12px;
+    font-weight: 400;
+    letter-spacing: 0.5px;
+    margin-top: 3px;
+    opacity: 0.8;
+  }
+  .contact-lines {
+    margin-top: 20px;
+    font-size: 16px;
+    line-height: 1.9;
+  }
+  .contact-lines a {
+    color: var(--cream);
+    text-decoration: none;
+    border-bottom: 1px solid var(--gold-soft);
+  }
+  .section-label {
+    font-size: 12px;
+    letter-spacing: 4px;
+    text-transform: uppercase;
+    color: var(--gold-soft);
+    margin: 30px 0 12px;
+  }
+  .links {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+  }
+  .links a {
+    display: block;
+    padding: 14px 16px;
+    border: 1.5px solid var(--gold-soft);
+    border-radius: 6px;
+    color: var(--cream);
+    text-decoration: none;
+    font-size: 16px;
+  }
+  .links a:active { background: rgba(255,215,0,0.12); }
+  footer {
+    margin-top: 36px;
+    font-size: 12.5px;
+    color: var(--cream);
+    opacity: 0.65;
+    line-height: 1.6;
+  }
+  @media (prefers-reduced-motion: no-preference) {
+    .frame > * { animation: rise 0.5s ease both; }
+    .frame > *:nth-child(2) { animation-delay: 0.05s; }
+    .frame > *:nth-child(3) { animation-delay: 0.1s; }
+    .frame > *:nth-child(4) { animation-delay: 0.15s; }
+    .frame > *:nth-child(5) { animation-delay: 0.2s; }
+    @keyframes rise {
+      from { opacity: 0; transform: translateY(10px); }
+      to { opacity: 1; transform: none; }
+    }
+  }
+</style>
+</head>
+<body>
+  <div class="frame">
+    <div class="eyebrow">United States Marine Corps</div>
+    <h1>MARINE FOR LIFE<span class="network">N E T W O R K</span></h1>
+    <div class="region">SoCal / Riverside Region</div>
+
+    <div class="rule"><span></span></div>
+
+    <p class="motto">"Once a Marine, Always a Marine"</p>
+
+    <a class="save-btn" href="contact.vcf" download="M4L-SoCal-Riverside.vcf">
+      Save Our Contact
+      <small>Adds phone &amp; email to your contacts</small>
+    </a>
+
+    <div class="contact-lines">
+      <a href="tel:5127363634">512-736-3634</a><br>
+      <a href="mailto:socalriverside.m4l@gmail.com">socalriverside.m4l@gmail.com</a>
+    </div>
+
+    <div class="section-label">Resources</div>
+    <div class="links">
+      <a href="https://usmc-mccs.org/marine-family-support/marine-for-life-network/" target="_blank" rel="noopener">Marine For Life Network (Official)</a>
+      <a href="https://my.neighbor.org/" target="_blank" rel="noopener">Father Joe's Villages — Housing &amp; Services</a>
+      <a href="https://wfw.org/" target="_blank" rel="noopener">Workshops for Warriors — Job Training</a>
+      <a href="https://vvsd.net/" target="_blank" rel="noopener">Veterans Village of San Diego</a>
+    </div>
+
+    <footer>
+      Connecting Marines, veterans, and families with employment,<br>
+      education, housing, and community resources.
+    </footer>
+  </div>
+</body>
+</html>
