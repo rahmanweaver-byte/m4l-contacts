@@ -1,0 +1,379 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Contact Roster</title>
+<style>
+  :root{
+    --navy:#0B2545;
+    --navy-2:#13315C;
+    --gold:#C9A227;
+    --gold-soft:#E8D28A;
+    --cream:#F7F4EC;
+    --ink:#1A2230;
+    --muted:#5F6B7A;
+    --line:#DED8C7;
+    --danger:#9B2C2C;
+    --ok:#2F6B4F;
+  }
+  *{box-sizing:border-box;}
+  html,body{margin:0;padding:0;}
+  body{
+    background:var(--cream);
+    color:var(--ink);
+    font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;
+    line-height:1.5;
+    -webkit-font-smoothing:antialiased;
+  }
+  .wrap{max-width:760px;margin:0 auto;padding:0 18px 64px;}
+
+  header.masthead{
+    background:var(--navy);
+    color:#fff;
+    margin:0 -18px 0;
+    padding:26px 18px 22px;
+    border-bottom:4px solid var(--gold);
+  }
+  header.masthead .kicker{
+    font-size:11px;letter-spacing:.22em;text-transform:uppercase;
+    color:var(--gold-soft);margin:0 0 6px;font-weight:600;
+  }
+  header.masthead h1{
+    font-family:Georgia,"Times New Roman",serif;font-weight:700;
+    font-size:30px;line-height:1.1;margin:0;letter-spacing:.01em;
+  }
+  header.masthead p.sub{margin:8px 0 0;color:#C7D2E0;font-size:14px;max-width:52ch;}
+
+  .card{
+    background:#fff;border:1px solid var(--line);border-radius:12px;
+    padding:20px;margin-top:22px;box-shadow:0 1px 2px rgba(11,37,69,.04);
+  }
+  .card h2{font-family:Georgia,serif;font-size:18px;margin:0 0 4px;color:var(--navy);}
+  .card .hint{color:var(--muted);font-size:13px;margin:0 0 16px;}
+
+  .grid{display:grid;grid-template-columns:1fr 1fr;gap:14px;}
+  .field{display:flex;flex-direction:column;gap:6px;}
+  .field.full{grid-column:1 / -1;}
+  label{font-size:12px;font-weight:600;letter-spacing:.04em;text-transform:uppercase;color:var(--navy-2);}
+  label .req{color:var(--gold);}
+  input,textarea{
+    font:inherit;color:var(--ink);background:var(--cream);
+    border:1px solid var(--line);border-radius:8px;padding:10px 12px;width:100%;
+    transition:border-color .15s, box-shadow .15s, background .15s;
+  }
+  input:focus,textarea:focus{
+    outline:none;border-color:var(--navy-2);background:#fff;
+    box-shadow:0 0 0 3px rgba(19,49,92,.12);
+  }
+  textarea{resize:vertical;min-height:64px;}
+  .actions{display:flex;gap:12px;align-items:center;margin-top:16px;flex-wrap:wrap;}
+  button{font:inherit;cursor:pointer;border:none;border-radius:8px;}
+  .btn-primary{
+    background:var(--navy);color:#fff;font-weight:600;padding:11px 20px;
+    letter-spacing:.02em;transition:background .15s, transform .05s;
+  }
+  .btn-primary:hover{background:var(--navy-2);}
+  .btn-primary:active{transform:translateY(1px);}
+  .btn-primary:disabled{opacity:.55;cursor:not-allowed;}
+  .form-msg{font-size:13px;font-weight:600;}
+  .form-msg.err{color:var(--danger);}
+  .form-msg.ok{color:var(--ok);}
+
+  .roster-head{
+    display:flex;align-items:baseline;justify-content:space-between;
+    gap:12px;margin-top:30px;margin-bottom:2px;flex-wrap:wrap;
+  }
+  .roster-head h2{font-family:Georgia,serif;color:var(--navy);font-size:20px;margin:0;}
+  .count-pill{
+    background:var(--gold);color:var(--navy);font-weight:700;font-size:13px;
+    border-radius:999px;padding:3px 12px;letter-spacing:.02em;
+  }
+  .toolbar{display:flex;gap:10px;align-items:center;margin:12px 0 4px;flex-wrap:wrap;}
+  .toolbar input.search{max-width:260px;}
+  .btn-ghost{
+    background:#fff;color:var(--navy);font-weight:600;font-size:13px;
+    border:1px solid var(--line);padding:9px 14px;
+  }
+  .btn-ghost:hover{border-color:var(--navy-2);}
+
+  .roster-list{display:flex;flex-direction:column;gap:12px;margin-top:14px;}
+  .entry{
+    background:#fff;border:1px solid var(--line);border-left:4px solid var(--gold);
+    border-radius:10px;padding:14px 16px;
+    display:flex;justify-content:space-between;gap:14px;align-items:flex-start;
+  }
+  .entry .who{min-width:0;}
+  .entry .name{font-weight:700;color:var(--navy);font-size:16px;word-break:break-word;}
+  .entry .org{font-size:13px;color:var(--muted);margin-top:1px;}
+  .entry .lines{margin-top:8px;display:flex;flex-direction:column;gap:3px;font-size:14px;}
+  .entry .lines a{color:var(--navy-2);text-decoration:none;word-break:break-word;}
+  .entry .lines a:hover{text-decoration:underline;}
+  .entry .notes{margin-top:8px;font-size:13px;color:var(--muted);white-space:pre-wrap;word-break:break-word;}
+  .entry .meta{font-size:11px;color:#9AA4B0;margin-top:8px;letter-spacing:.03em;}
+  .del{
+    background:transparent;color:var(--muted);border:1px solid var(--line);
+    border-radius:8px;padding:6px 10px;font-size:12px;font-weight:600;flex-shrink:0;
+  }
+  .del:hover{color:#fff;background:var(--danger);border-color:var(--danger);}
+
+  .empty{
+    text-align:center;color:var(--muted);padding:34px 16px;
+    border:1px dashed var(--line);border-radius:10px;margin-top:14px;font-size:14px;
+  }
+  .privacy{font-size:12px;color:var(--muted);margin-top:22px;text-align:center;line-height:1.6;}
+  @media (max-width:560px){
+    .grid{grid-template-columns:1fr;}
+    header.masthead h1{font-size:25px;}
+  }
+</style>
+</head>
+<body>
+<div class="wrap">
+  <header class="masthead">
+    <p class="kicker">Contact Roster</p>
+    <h1>Add yourself to the list</h1>
+    <p class="sub">Fill in your details below and add your entry. Your info is saved so the roster stays put.</p>
+  </header>
+
+  <section class="card" aria-label="Add your contact info">
+    <h2>Your information</h2>
+    <p class="hint">Only your name is required. Everything else is optional.</p>
+    <div class="grid">
+      <div class="field">
+        <label for="f-name">Full name <span class="req">*</span></label>
+        <input id="f-name" type="text" autocomplete="name" placeholder="Jane Doe" maxlength="80">
+      </div>
+      <div class="field">
+        <label for="f-org">Organization / Unit</label>
+        <input id="f-org" type="text" autocomplete="organization" placeholder="Optional" maxlength="80">
+      </div>
+      <div class="field">
+        <label for="f-email">Email</label>
+        <input id="f-email" type="email" autocomplete="email" placeholder="name@example.com" maxlength="120">
+      </div>
+      <div class="field">
+        <label for="f-phone">Phone</label>
+        <input id="f-phone" type="tel" autocomplete="tel" placeholder="(555) 555-5555" maxlength="40">
+      </div>
+      <div class="field full">
+        <label for="f-notes">Role / Notes</label>
+        <textarea id="f-notes" placeholder="Optional — e.g. role, availability, how to reach you" maxlength="400"></textarea>
+      </div>
+    </div>
+    <div class="actions">
+      <button class="btn-primary" id="addBtn">Add to roster</button>
+      <span class="form-msg" id="formMsg" role="status" aria-live="polite"></span>
+    </div>
+  </section>
+
+  <div class="roster-head">
+    <h2>Roster</h2>
+    <span class="count-pill" id="countPill">0 people</span>
+  </div>
+  <div class="toolbar">
+    <input class="search" id="search" type="search" placeholder="Search name, email, org…" aria-label="Search roster">
+    <button class="btn-ghost" id="exportBtn">Export CSV</button>
+  </div>
+
+  <div id="listArea" aria-live="polite">
+    <div class="empty" id="emptyState">Loading roster…</div>
+    <div class="roster-list" id="rosterList" hidden></div>
+  </div>
+
+  <p class="privacy" id="privacyNote"></p>
+</div>
+
+<script>
+const STORE_KEY = "roster-entries-v1";
+const SHARED = true;
+
+// Storage layer: use Claude's shared storage when the file is open inside Claude;
+// fall back to this device's local storage when the file is opened on its own (iPad, etc.).
+const hasCloud = !!(window.storage && window.storage.get && window.storage.set);
+let memFallback = null; // last-resort in-memory store if localStorage is blocked
+
+async function storeGet(){
+  if(hasCloud){
+    try{ const r = await window.storage.get(STORE_KEY, SHARED); return r && r.value ? r.value : null; }
+    catch(_){ return null; }
+  }
+  try{ return localStorage.getItem(STORE_KEY); }
+  catch(_){ return memFallback; }
+}
+async function storeSet(val){
+  if(hasCloud){
+    const r = await window.storage.set(STORE_KEY, val, SHARED);
+    if(!r) throw new Error("Storage did not confirm the save.");
+    return;
+  }
+  try{ localStorage.setItem(STORE_KEY, val); }
+  catch(_){ memFallback = val; } // private browsing: keep it for this session at least
+}
+
+let entries = [];
+let filter = "";
+
+const $ = (id) => document.getElementById(id);
+const esc = (s) => String(s ?? "").replace(/[&<>"']/g, c => (
+  {"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c]
+));
+
+function setPrivacyNote(){
+  const el = $("privacyNote");
+  el.textContent = hasCloud
+    ? "Entries are shared with everyone who opens this roster inside Claude. Don't add anything you wouldn't want the whole group to see."
+    : "Entries are saved on this device in this browser. Tap Export CSV now and then to keep a backup you won't lose.";
+}
+
+async function readAll(){
+  const raw = await storeGet();
+  try{ return raw ? JSON.parse(raw) : []; }catch(_){ return []; }
+}
+
+async function loadEntries(){
+  entries = await readAll();
+  render();
+}
+
+async function addEntry(){
+  const name  = $("f-name").value.trim();
+  const org   = $("f-org").value.trim();
+  const email = $("f-email").value.trim();
+  const phone = $("f-phone").value.trim();
+  const notes = $("f-notes").value.trim();
+  const msg = $("formMsg");
+
+  if(!name){
+    msg.textContent = "Please enter a name.";
+    msg.className = "form-msg err";
+    $("f-name").focus();
+    return;
+  }
+
+  const btn = $("addBtn");
+  btn.disabled = true;
+  msg.textContent = "Saving…";
+  msg.className = "form-msg";
+
+  const entry = {
+    id: Date.now().toString(36) + Math.random().toString(36).slice(2,6),
+    name, org, email, phone, notes,
+    added: new Date().toISOString()
+  };
+
+  try{
+    const latest = await readAll();        // re-read so we don't overwrite others' additions
+    const next = [...latest, entry];
+    await storeSet(JSON.stringify(next));
+    entries = next;
+
+    ["f-name","f-org","f-email","f-phone","f-notes"].forEach(id => $(id).value = "");
+    msg.textContent = "Added. Thanks!";
+    msg.className = "form-msg ok";
+    $("f-name").focus();
+    render();
+    setTimeout(() => { if(msg.textContent === "Added. Thanks!"){ msg.textContent=""; } }, 2500);
+  }catch(e){
+    msg.textContent = "Couldn't save. Please try again.";
+    msg.className = "form-msg err";
+  }finally{
+    btn.disabled = false;
+  }
+}
+
+async function deleteEntry(id){
+  const target = entries.find(e => e.id === id);
+  if(!target) return;
+  if(!confirm(`Remove ${target.name} from the roster?`)) return;
+  try{
+    const latest = await readAll();
+    const next = latest.filter(e => e.id !== id);
+    await storeSet(JSON.stringify(next));
+    entries = next;
+    render();
+  }catch(e){
+    alert("Couldn't remove that entry. Please try again.");
+  }
+}
+
+function matches(e){
+  if(!filter) return true;
+  const hay = [e.name, e.org, e.email, e.phone, e.notes].join(" ").toLowerCase();
+  return hay.includes(filter);
+}
+
+function render(){
+  const list = $("rosterList");
+  const empty = $("emptyState");
+  const pill = $("countPill");
+
+  pill.textContent = entries.length === 1 ? "1 person" : `${entries.length} people`;
+
+  const shown = entries.filter(matches);
+
+  if(entries.length === 0){
+    list.hidden = true; empty.hidden = false;
+    empty.textContent = "No one's on the roster yet. Be the first to add your info above.";
+    return;
+  }
+  if(shown.length === 0){
+    list.hidden = true; empty.hidden = false;
+    empty.textContent = "No entries match your search.";
+    return;
+  }
+
+  empty.hidden = true; list.hidden = false;
+
+  const ordered = [...shown].reverse(); // newest first
+  list.innerHTML = ordered.map(e => {
+    const lines = [];
+    if(e.email) lines.push(`<a href="mailto:${esc(e.email)}">${esc(e.email)}</a>`);
+    if(e.phone) lines.push(`<a href="tel:${esc(e.phone.replace(/[^0-9+]/g,''))}">${esc(e.phone)}</a>`);
+    const added = new Date(e.added);
+    const when = isNaN(added) ? "" : added.toLocaleDateString(undefined,{month:"short",day:"numeric"});
+    return `
+      <div class="entry">
+        <div class="who">
+          <div class="name">${esc(e.name)}</div>
+          ${e.org ? `<div class="org">${esc(e.org)}</div>` : ""}
+          ${lines.length ? `<div class="lines">${lines.join("")}</div>` : ""}
+          ${e.notes ? `<div class="notes">${esc(e.notes)}</div>` : ""}
+          ${when ? `<div class="meta">Added ${when}</div>` : ""}
+        </div>
+        <button class="del" data-id="${e.id}" aria-label="Remove ${esc(e.name)}">Remove</button>
+      </div>`;
+  }).join("");
+
+  list.querySelectorAll(".del").forEach(b => {
+    b.addEventListener("click", () => deleteEntry(b.dataset.id));
+  });
+}
+
+function exportCSV(){
+  if(entries.length === 0){ alert("The roster is empty — nothing to export yet."); return; }
+  const headers = ["Name","Organization","Email","Phone","Notes","Added"];
+  const q = (v) => `"${String(v ?? "").replace(/"/g,'""')}"`;
+  const rows = entries.map(e => [e.name,e.org,e.email,e.phone,e.notes,e.added].map(q).join(","));
+  const csv = [headers.map(q).join(","), ...rows].join("\r\n");
+  const blob = new Blob([csv], {type:"text/csv;charset=utf-8;"});
+  const url = URL.createObjectURL(blob);
+  const a = document.createElement("a");
+  a.href = url; a.download = "contact-roster.csv";
+  document.body.appendChild(a); a.click(); document.body.removeChild(a);
+  URL.revokeObjectURL(url);
+}
+
+$("addBtn").addEventListener("click", addEntry);
+$("f-notes").addEventListener("keydown", (e) => { if((e.metaKey||e.ctrlKey)&&e.key==="Enter") addEntry(); });
+["f-name","f-org","f-email","f-phone"].forEach(id => {
+  $(id).addEventListener("keydown", (e) => { if(e.key==="Enter") addEntry(); });
+});
+$("search").addEventListener("input", (e) => { filter = e.target.value.trim().toLowerCase(); render(); });
+$("exportBtn").addEventListener("click", exportCSV);
+
+setPrivacyNote();
+loadEntries();
+</script>
+</body>
+</html>
