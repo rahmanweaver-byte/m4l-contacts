@@ -158,6 +158,17 @@
     color: var(--gold-soft);
     margin: 30px 0 12px;
   }
+  .sub-label {
+    font-size: 12px;
+    font-style: italic;
+    letter-spacing: 1.5px;
+    color: var(--gold);
+    text-align: left;
+    margin: 16px 2px 2px;
+    padding: 0 4px 5px;
+    border-bottom: 1px solid rgba(232,199,102,0.4);
+  }
+  .links .sub-label:first-child { margin-top: 0; }
   .links {
     width: 100%;
     display: flex;
@@ -365,24 +376,35 @@
       <div class="column">
         <div class="section-label">Resources</div>
         <div class="links">
+          <div class="sub-label">Nationwide &amp; statewide</div>
           <a href="https://usmc-mccs.org/marine-family-support/marine-for-life-network/" target="_blank" rel="noopener">Marine For Life Network (Official)</a>
           <div class="link-note">The national program page. Marines, veterans, and family members can request a referral to their regional representative — that's me for SoCal/Riverside — plus access to the M4L LinkedIn group and hiring events.</div>
           <a href="https://www.va.gov/" target="_blank" rel="noopener">VA — Benefits, Healthcare &amp; Claims</a>
           <div class="link-note">Start here for healthcare enrollment, disability claims, education benefits, and home loans. Set up a VA.gov account with Login.gov or ID.me and you can file claims, track status, and pull your own records in one place.</div>
-          <a href="https://www.calvet.ca.gov/" target="_blank" rel="noopener">CalVet — California Veteran Benefits</a>
-          <div class="link-note">California benefits stacked on top of federal ones: property tax exemptions for disabled veterans, college fee waivers for dependents, veterans homes, and CalVet home and farm loans. California residency required.</div>
           <a href="https://www.skillbridge.mil/" target="_blank" rel="noopener">DoD SkillBridge — Transition Internships</a>
           <div class="link-note">Train with a civilian employer during your last 180 days on active duty while still drawing full pay, BAH, and TRICARE. Commander approval is required and every branch now caps the length by rank, so open the conversation 9 to 12 months out. Drilling reservists generally don't qualify unless on 180+ day Title 10 orders.</div>
           <a href="https://www.va.gov/careers-employment/vocational-rehabilitation/" target="_blank" rel="noopener">VR&amp;E — Veteran Readiness &amp; Employment</a>
           <div class="link-note">Chapter 31. Tuition, training, and job placement for veterans with a service-connected disability that gets in the way of working. Broader than the GI Bill — it can fund retraining, equipment, or self-employment — and it doesn't spend your GI Bill months.</div>
+          <a href="https://www.calvet.ca.gov/" target="_blank" rel="noopener">CalVet — California Veteran Benefits</a>
+          <div class="link-note">California benefits stacked on top of federal ones: property tax exemptions for disabled veterans, college fee waivers for dependents, veterans homes, and CalVet home and farm loans. California residency required.</div>
+          <div class="sub-label">San Diego County</div>
+          <a href="https://www.sandiegocounty.gov/hhsa/programs/ais/veterans_services" target="_blank" rel="noopener">County Office of Military &amp; Veterans Affairs</a>
+          <div class="link-note">Accredited county representatives who prepare and file your VA claims for free, follow them to a decision, and build appeals. Walk-in centers around the county. San Diego has the second largest veteran population in California — use them instead of paying a claims agent.</div>
           <a href="https://wfw.org/" target="_blank" rel="noopener">Workshops for Warriors — Job Training</a>
           <div class="link-note">A nonprofit school at 2970 Main Street in San Diego running accelerated 16-week CNC machining and welding programs. Graduates earn credentials from the American Welding Society, NIMS, Mastercam, and SolidWorks. Open to veterans, transitioning service members, and wounded warriors; VA education benefits accepted. (619) 550-1620.</div>
+          <div class="sub-label">Riverside County</div>
+          <a href="https://veteranservices.co.riverside.ca.us" target="_blank" rel="noopener">Riverside County Veterans' Services</a>
+          <div class="link-note">Established in 1930 and serving roughly 150,000 county veterans. Free benefits counseling, claims preparation, and appeals from accredited county representatives, plus referrals for medical care, education, and employment. Main office at 4360 Orange Street in Riverside, with satellite offices countywide.</div>
+          <div class="sub-label">Los Angeles County</div>
+          <a href="https://mva.lacounty.gov/" target="_blank" rel="noopener">LA County Military &amp; Veterans Affairs</a>
+          <div class="link-note">County advocates for veterans, dependents, and survivors on benefit entitlements. They also run the Veteran Peer Access Network, which pairs you with a trained veteran peer for help across housing, mental health, employment, and legal issues.</div>
         </div>
       </div>
 
       <div class="column">
         <div class="section-label">Unhoused Veterans</div>
         <div class="links">
+          <div class="sub-label">Nationwide &amp; statewide</div>
           <a href="https://department.va.gov/homeless/nationalcallcenter/" target="_blank" rel="noopener">Homeless Veterans Call Line — 877-424-3838</a>
           <div class="link-note">Start here. Free, confidential, answered 24/7 by trained counselors who connect you to the nearest VA. Family and friends can call on a veteran's behalf. Tap to dial: <a href="tel:8774243838">877-424-3838</a>.</div>
           <a href="https://department.va.gov/homeless/about-us/" target="_blank" rel="noopener">VA Homeless Programs — What's Available</a>
@@ -391,34 +413,59 @@
           <div class="link-note">A HUD rental voucher paired with VA case management. Ask your local VA Medical Center's homeless coordinator to start a referral, or go through the call line above.</div>
           <a href="https://department.va.gov/homeless/supportive-services-for-veteran-families/" target="_blank" rel="noopener">SSVF — Rent, Deposits &amp; Rapid Re-Housing</a>
           <div class="link-note">Short-term help through community partners: back rent, security deposits, utilities, moving costs, and case management, either to prevent a loss of housing or to get you back into one fast. For rapid re-housing, VA states that employment, income, criminal history, and sobriety are not prerequisites.</div>
-          <a href="https://usvets.org/locations/inland-empire/" target="_blank" rel="noopener">U.S.VETS Inland Empire — Riverside</a>
-          <div class="link-note">March Veterans Village at March Air Reserve Base, serving Riverside and San Bernardino counties since 2003. Emergency, transitional, and permanent housing plus mental health care and career services for more than 400 veterans and their families.</div>
+          <a href="https://department.va.gov/homeless/veterans-justice-programs/veterans-justice-outreach/" target="_blank" rel="noopener">Veterans Justice Outreach</a>
+          <div class="link-note">For veterans whose housing is blocked by court dates, an open case, or a record. VJO specialists link you to treatment and housing instead, and work with veterans treatment courts. Ask for the VJO specialist at your VA medical center.</div>
+          <div class="sub-label">San Diego County</div>
           <a href="https://vvsd.net/" target="_blank" rel="noopener">Veterans Village of San Diego</a>
           <div class="link-note">Veterans helping veterans since 1981. Emergency and transitional housing, treatment and recovery programs, and employment services out of their Pacific Highway campus. Serves veterans of all eras.</div>
           <a href="https://my.neighbor.org/" target="_blank" rel="noopener">Father Joe's Villages — Housing &amp; Services</a>
           <div class="link-note">San Diego's largest homeless services provider, based downtown. Shelter, interim and permanent housing, meals, medical and dental care, and job training. Their housing navigators can connect veterans into VA programs.</div>
-          <a href="https://department.va.gov/homeless/veterans-justice-programs/veterans-justice-outreach/" target="_blank" rel="noopener">Veterans Justice Outreach</a>
-          <div class="link-note">For veterans whose housing is blocked by court dates, an open case, or a record. VJO specialists link you to treatment and housing instead, and work with veterans treatment courts. Ask for the VJO specialist at your VA medical center.</div>
+          <div class="sub-label">Riverside County</div>
+          <a href="https://usvets.org/locations/inland-empire/" target="_blank" rel="noopener">U.S.VETS Inland Empire</a>
+          <div class="link-note">March Veterans Village at March Air Reserve Base, serving Riverside and San Bernardino counties since 2003. Emergency, transitional, and permanent housing plus mental health care and career services for more than 400 veterans and their families.</div>
+          <div class="sub-label">Los Angeles County</div>
+          <a href="https://www.va.gov/greater-los-angeles-health-care/health-services/homeless-veteran-care/" target="_blank" rel="noopener">VA Greater Los Angeles — Homeless Care</a>
+          <div class="link-note">Shelter, food, and permanent housing help through more than a dozen community partners, anchored at the West LA campus. Their Veteran Peer Access Network is open to any veteran regardless of discharge status.</div>
+          <a href="https://www.ndvets.org/" target="_blank" rel="noopener">New Directions for Veterans</a>
+          <div class="link-note">Founded in 1992 by formerly homeless Vietnam veterans. Four transitional housing programs and several permanent supportive housing sites across LA County, plus counseling, education, and job placement.</div>
+          <a href="https://housing.lacounty.gov/Veterans.html" target="_blank" rel="noopener">LA County Veteran Housing Directory</a>
+          <div class="link-note">The county's list of veteran-specific housing: VASH-accepting buildings, permanent supportive housing sites, and the LAHSA veterans line. Useful when you know you need a unit and want to see what actually exists.</div>
         </div>
       </div>
 
       <div class="column">
         <div class="section-label">Fun Benefits</div>
         <div class="links">
+          <div class="sub-label">Nationwide &amp; statewide</div>
           <a href="https://www.vettix.org/" target="_blank" rel="noopener">Vet Tix — Free Concert &amp; Game Tickets</a>
           <div class="link-note">Currently serving, Guard, Reserve, veterans of all eras, and families of the fallen. Create an account, get your service verified, then request tickets. You pay only a small delivery fee.</div>
           <a href="https://www.nps.gov/planyourvisit/veterans-and-gold-star-families-free-access.htm" target="_blank" rel="noopener">National Parks — Free Military Pass</a>
-          <div class="link-note">Veterans and Gold Star Families get a free <em>lifetime</em> pass. Active duty, Guard, Reserve, and dependents get a free annual pass. Covers entrance at 2,000+ federal sites, including Cabrillo National Monument. Pick one up free at any park entrance with a CAC, VHIC, or DD-214, or order it from the <a href="https://store.usgs.gov/MilitaryPass" target="_blank" rel="noopener">USGS store</a>.</div>
+          <div class="link-note">Veterans and Gold Star Families get a free <em>lifetime</em> pass. Active duty, Guard, Reserve, and dependents get a free annual pass. Covers 2,000+ federal sites — Joshua Tree, Cabrillo National Monument, the Santa Monica Mountains. Pick one up free at any park entrance with a CAC, VHIC, or DD-214, or order it from the <a href="https://store.usgs.gov/MilitaryPass" target="_blank" rel="noopener">USGS store</a>.</div>
+          <a href="https://www.arts.gov/initiatives/blue-star-museums" target="_blank" rel="noopener">Blue Star Museums — Free Summer Admission</a>
+          <div class="link-note">Armed Forces Day through Labor Day each year: active duty, Guard, and Reserve plus up to five family members get in free at 2,000+ museums, zoos, and gardens. Balboa Park, many LA museums, and Inland Empire sites take part — check the map each spring to see who registered.</div>
+          <a href="https://www.parks.ca.gov/?page_id=30958" target="_blank" rel="noopener">California State Parks — Distinguished Veteran Pass</a>
+          <div class="link-note">Free day use, family camping, and boat use at over 100 state parks — Mount San Jacinto above Palm Springs, Lake Perris, Chino Hills, Silver Strand. For honorably discharged California residents with a combined rating of 50% or higher from wartime service, former POWs, and Medal of Honor recipients. Valid five years.</div>
+          <div class="sub-label">San Diego County</div>
           <a href="https://seaworld.com/san-diego/tickets/military-discount-active/" target="_blank" rel="noopener">SeaWorld San Diego — Waves of Honor</a>
           <div class="link-note">One free admission per year for active duty, drilling reservists, and Guard, plus up to three dependents. Veterans usually get their own free-ticket window around Military Appreciation Month in May — register early, it closes fast.</div>
-          <a href="https://www.arts.gov/initiatives/blue-star-museums" target="_blank" rel="noopener">Blue Star Museums — Free Summer Admission</a>
-          <div class="link-note">Armed Forces Day through Labor Day each year: active duty, Guard, and Reserve plus up to five family members get in free at 2,000+ museums, zoos, and gardens nationwide — most of Balboa Park included.</div>
           <a href="https://www.military.com/discounts/san-diego-zoo-military-offer" target="_blank" rel="noopener">San Diego Zoo &amp; Safari Park</a>
           <div class="link-note">Active duty enter free every day of the year with a valid ID — no ticket needed. Spouses and dependents get 10% off a 1-Day Pass. Retirees and veterans go through the MWR/ITT office on base instead.</div>
           <a href="https://sandiegomuseumcouncil.org/free-and-discount-museum-admission-for-veterans-and-active-duty-military/" target="_blank" rel="noopener">San Diego Museums — Free &amp; Reduced</a>
           <div class="link-note">USS Midway, the San Diego Air &amp; Space Museum, and the Veterans Museum at Balboa Park are free for active duty and reservists year-round. Veterans get a reduced rate.</div>
           <a href="https://www.military.com/discounts/the-best-military-discounts-in-san-diego.html" target="_blank" rel="noopener">More San Diego Military Deals</a>
-          <div class="link-note">Del Mar racing, LEGOLAND, Navy Getaways cottages, base golf, and the ITT ticket windows. Offers and dates change — confirm with the provider before you drive out.</div>
+          <div class="link-note">Del Mar racing — free general admission for active duty and dependents on race days — plus LEGOLAND, Navy Getaways cottages at Fiddler's Cove, base golf at Admiral Baker, and the ITT ticket windows, usually the cheapest tickets in the county.</div>
+          <div class="sub-label">Riverside County</div>
+          <a href="https://rivco.gov/node/3926" target="_blank" rel="noopener">VALOR &amp; WAIVE — Free County Admissions</a>
+          <div class="link-note">Riverside County's own thank-you programs. Free entrance to many county events and facilities for current and former military, their families, and guests, plus free parking at many county buildings.</div>
+          <a href="https://pstramway.com/military-days-at-the-palm-springs-aerial-tramway-4-2/" target="_blank" rel="noopener">Palm Springs Aerial Tramway — Military Days</a>
+          <div class="link-note">Every July, free admission for active, former, and retired military with a valid ID, plus spouses of deployed members and military widows and widowers. Up to six guests get 25% off. The tram climbs to Mount San Jacinto State Park, which runs roughly 30 degrees cooler than the valley floor.</div>
+          <div class="sub-label">Los Angeles County</div>
+          <a href="https://lafleetweek.com/" target="_blank" rel="noopener">LA Fleet Week — Free, Memorial Day Weekend</a>
+          <div class="link-note">Four days on the LA Waterfront in San Pedro: free public tours of active-duty Navy and Coast Guard ships, flyovers, equipment displays, and free trolley service. Ship tour tickets go through a same-day virtual queue. Free to everyone, no ID required.</div>
+          <a href="https://pacificbattleship.com/programs/veterans/" target="_blank" rel="noopener">Battleship IOWA Museum — San Pedro</a>
+          <div class="link-note">The only battleship museum on the West Coast, now becoming the National Museum of the Surface Navy. Military and veterans get in free during LA Fleet Week; the rest of the year it's a military discount at the gate or through GOVX.</div>
+          <a href="https://www.aquariumofpacific.org/visit/discounts" target="_blank" rel="noopener">Aquarium of the Pacific — Long Beach</a>
+          <div class="link-note">Free admission for veterans and military personnel with service ID on Veterans Day, advance reservations required. Year-round, buy discounted tickets ahead at any MWR/ITT office rather than paying at the window.</div>
         </div>
       </div>
     </div>
