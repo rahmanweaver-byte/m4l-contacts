@@ -206,10 +206,10 @@
   .crisis-line:active { background: rgba(251,246,234,0.12); }
   .columns {
     width: 100%;
-    display: flex;
-    flex-direction: column;
+    display: grid;
+    grid-template-columns: 1fr;
   }
-  .column { width: 100%; }
+  .column { min-width: 0; }
   footer {
     margin-top: 36px;
     font-size: 12.5px;
@@ -217,7 +217,7 @@
     opacity: 0.65;
     line-height: 1.6;
   }
-  /* Two columns side by side once there's room; stacked below this. */
+  /* Two columns from 820px, three from 1240px; stacked below. */
   @media (min-width: 820px) {
     .frame {
       max-width: 980px;
@@ -230,15 +230,39 @@
       margin-right: auto;
     }
     .columns {
-      flex-direction: row;
-      align-items: flex-start;
-      gap: 36px;
-    }
-    .column {
-      flex: 1 1 0;
-      min-width: 0;
+      grid-template-columns: repeat(2, 1fr);
+      align-items: start;
+      gap: 8px 36px;
     }
     .column .section-label { margin-top: 34px; }
+  }
+  @media (min-width: 1240px) {
+    .frame { max-width: 1320px; }
+    .columns {
+      grid-template-columns: repeat(3, 1fr);
+      gap: 40px;
+    }
+  }
+  .qr-block {
+    margin-top: 34px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+  .qr {
+    width: 150px;
+    height: 150px;
+    border: 3px solid var(--gold-soft);
+    border-radius: 6px;
+    background: var(--cream);
+    display: block;
+  }
+  .qr-caption {
+    margin-top: 10px;
+    font-size: 13px;
+    line-height: 1.5;
+    color: var(--gold-soft);
+    max-width: 300px;
   }
   .verified {
     margin-top: 12px;
@@ -293,6 +317,14 @@
       word-break: break-all;
     }
     .link-note a[href^="http"]::after { content: ""; }
+    .qr {
+      width: 190px;
+      height: 190px;
+      border: 1pt solid #000;
+      break-inside: avoid;
+      page-break-inside: avoid;
+    }
+    .qr-caption { color: #000 !important; max-width: none; }
     .frame > * { animation: none !important; }
   }
   @media (prefers-reduced-motion: no-preference) {
@@ -337,8 +369,6 @@
           <div class="link-note">The national program page. Marines, veterans, and family members can request a referral to their regional representative — that's me for SoCal/Riverside — plus access to the M4L LinkedIn group and hiring events.</div>
           <a href="https://www.va.gov/" target="_blank" rel="noopener">VA — Benefits, Healthcare &amp; Claims</a>
           <div class="link-note">Start here for healthcare enrollment, disability claims, education benefits, and home loans. Set up a VA.gov account with Login.gov or ID.me and you can file claims, track status, and pull your own records in one place.</div>
-          <a href="https://www.va.gov/homeless/hud-vash.asp" target="_blank" rel="noopener">HUD-VASH — Housing Vouchers for Veterans</a>
-          <div class="link-note">To start: contact your local VA Medical Center's homeless coordinator, or call the National Call Center for Homeless Veterans at <a href="tel:8774243838">877-424-3838</a> (free &amp; confidential, 24/7).</div>
           <a href="https://www.calvet.ca.gov/" target="_blank" rel="noopener">CalVet — California Veteran Benefits</a>
           <div class="link-note">California benefits stacked on top of federal ones: property tax exemptions for disabled veterans, college fee waivers for dependents, veterans homes, and CalVet home and farm loans. California residency required.</div>
           <a href="https://www.skillbridge.mil/" target="_blank" rel="noopener">DoD SkillBridge — Transition Internships</a>
@@ -347,10 +377,28 @@
           <div class="link-note">Chapter 31. Tuition, training, and job placement for veterans with a service-connected disability that gets in the way of working. Broader than the GI Bill — it can fund retraining, equipment, or self-employment — and it doesn't spend your GI Bill months.</div>
           <a href="https://wfw.org/" target="_blank" rel="noopener">Workshops for Warriors — Job Training</a>
           <div class="link-note">A nonprofit school at 2970 Main Street in San Diego running accelerated 16-week CNC machining and welding programs. Graduates earn credentials from the American Welding Society, NIMS, Mastercam, and SolidWorks. Open to veterans, transitioning service members, and wounded warriors; VA education benefits accepted. (619) 550-1620.</div>
-          <a href="https://my.neighbor.org/" target="_blank" rel="noopener">Father Joe's Villages — Housing &amp; Services</a>
-          <div class="link-note">San Diego's largest homeless services provider, based downtown. Shelter, interim and permanent housing, meals, medical and dental care, and job training. Their housing navigators can connect veterans into VA programs.</div>
+        </div>
+      </div>
+
+      <div class="column">
+        <div class="section-label">Unhoused Veterans</div>
+        <div class="links">
+          <a href="https://department.va.gov/homeless/nationalcallcenter/" target="_blank" rel="noopener">Homeless Veterans Call Line — 877-424-3838</a>
+          <div class="link-note">Start here. Free, confidential, answered 24/7 by trained counselors who connect you to the nearest VA. Family and friends can call on a veteran's behalf. Tap to dial: <a href="tel:8774243838">877-424-3838</a>.</div>
+          <a href="https://department.va.gov/homeless/about-us/" target="_blank" rel="noopener">VA Homeless Programs — What's Available</a>
+          <div class="link-note">The full picture in one place: outreach, emergency and transitional beds through Grant and Per Diem, and permanent housing through HUD-VASH and SSVF. Useful for figuring out which door you need before you call.</div>
+          <a href="https://www.va.gov/homeless/hud-vash.asp" target="_blank" rel="noopener">HUD-VASH — Housing Vouchers for Veterans</a>
+          <div class="link-note">A HUD rental voucher paired with VA case management. Ask your local VA Medical Center's homeless coordinator to start a referral, or go through the call line above.</div>
+          <a href="https://department.va.gov/homeless/supportive-services-for-veteran-families/" target="_blank" rel="noopener">SSVF — Rent, Deposits &amp; Rapid Re-Housing</a>
+          <div class="link-note">Short-term help through community partners: back rent, security deposits, utilities, moving costs, and case management, either to prevent a loss of housing or to get you back into one fast. For rapid re-housing, VA states that employment, income, criminal history, and sobriety are not prerequisites.</div>
+          <a href="https://usvets.org/locations/inland-empire/" target="_blank" rel="noopener">U.S.VETS Inland Empire — Riverside</a>
+          <div class="link-note">March Veterans Village at March Air Reserve Base, serving Riverside and San Bernardino counties since 2003. Emergency, transitional, and permanent housing plus mental health care and career services for more than 400 veterans and their families.</div>
           <a href="https://vvsd.net/" target="_blank" rel="noopener">Veterans Village of San Diego</a>
           <div class="link-note">Veterans helping veterans since 1981. Emergency and transitional housing, treatment and recovery programs, and employment services out of their Pacific Highway campus. Serves veterans of all eras.</div>
+          <a href="https://my.neighbor.org/" target="_blank" rel="noopener">Father Joe's Villages — Housing &amp; Services</a>
+          <div class="link-note">San Diego's largest homeless services provider, based downtown. Shelter, interim and permanent housing, meals, medical and dental care, and job training. Their housing navigators can connect veterans into VA programs.</div>
+          <a href="https://department.va.gov/homeless/veterans-justice-programs/veterans-justice-outreach/" target="_blank" rel="noopener">Veterans Justice Outreach</a>
+          <div class="link-note">For veterans whose housing is blocked by court dates, an open case, or a record. VJO specialists link you to treatment and housing instead, and work with veterans treatment courts. Ask for the VJO specialist at your VA medical center.</div>
         </div>
       </div>
 
@@ -378,6 +426,12 @@
     <a class="crisis-line" href="https://www.veteranscrisisline.net/" target="_blank" rel="noopener">
       Veterans Crisis Line — Dial 988, then Press 1
     </a>
+
+    <div class="qr-block">
+      <img class="qr" src="qr-page.png" width="150" height="150"
+           alt="QR code linking to this page: rahmanweaver-byte.github.io/m4l-contacts">
+      <div class="qr-caption">Scan to open this page — or show this screen to another Marine's phone.</div>
+    </div>
 
     <footer>
       Connecting Marines, veterans, and families with employment,<br>
