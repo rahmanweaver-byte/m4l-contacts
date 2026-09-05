@@ -243,15 +243,20 @@
     .columns {
       grid-template-columns: repeat(2, 1fr);
       align-items: start;
-      gap: 8px 36px;
+      column-gap: 60px;
+      row-gap: 12px;
     }
     .column .section-label { margin-top: 34px; }
+    /* Left-align inside columns so titles line up with their notes. */
+    .column .links a { text-align: left; }
+    .column .section-label { text-align: left; padding-left: 2px; }
   }
   @media (min-width: 1240px) {
-    .frame { max-width: 1320px; }
+    .frame { max-width: 1400px; }
     .columns {
       grid-template-columns: repeat(3, 1fr);
-      gap: 40px;
+      column-gap: 72px;
+      row-gap: 12px;
     }
   }
   .qr-block {
